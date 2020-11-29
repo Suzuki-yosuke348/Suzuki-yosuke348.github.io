@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Delay Searcher</title>
+    </head>
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <body>
+        <h1>路線の遅延を表示するAndroidアプリケーション</h1>
+        <p>現在世の中に出回っている遅延情報は事故の発生時刻や事故の原因などの煩雑な要素が多く、
+            シンプルに「どの路線が遅延しているのか」に重きをおいた遅延情報が欲しいと思ったのがきっかけである。</p>
+        <p>その中で日常で使うことを想定した際に、Javaの勉強の一環でAndroidアプリケーション製作を選択肢、
+            開発環境単体でコーディング、デバッグが可能な公式開発環境Android Studioを選択した。</p>
+        <p>当時Twitterとの連携に興味を持っていたため、遅延情報をTwitterで投稿できるようにしたいと思い、ネットでいろいろ調べてみると、
+            アプリケーションとAndroidを紐付けするものとして有名なのはTwitter4Jだが、設定の手軽さを考えてTwitter社が提供している
+            フレームワークであるFabric(現在はFirebaseに統合)を使うことにした。</p>
+        <p><img src="./picture/MainActivity.jpg" alt="表示される遅延情報"/></p>
+        <p>アプリケーションを起動したときの最初のアクティビティ。WebAPIを叩いて得られたJSONファイルからパースを行って、
+            路線と会社名を取得してリストビューに表示する。データが表示できたらトーストを表示する。</p>
+        <p><img src="./picture/TweetActivity.jpg" alt="ツイート内容"/></p>
+        <p>リストビューの中で発信したい路線をタップすると、Twitter関連のアクティビティに遷移する。ここからTwitterアカウントの認証、ツイート画面への遷移、
+            TLを表示する機能(ツイート、TL表示は認証後使うことができる)を行える。</p>
+        <p><img src="./picture/TimeLineActivity.jpg" alt="TLの表示"/></p>
+        <p>TLを表示した結果。</p>
+
+        <p>現在は、遅延情報に取得したAPIのアドレスの変更と、FabricがFirebaseに統合したため現在は動作ができないため、
+            今後改良をしていきたい。</p>
+        <a href="./index.html">戻る</a>
+
+    </body>
+    <footer>
+        <address>
+            Yosuke Suzuki
+            <a href="mailto:7bjk2115@mail.u-tokai.ac.jp">mail</a>
+        </address>
+        2020/11/26 作成
+    </footer>
+</html>
