@@ -8,6 +8,7 @@ h1{
    border-bottom: thin solid;
 }
 img{
+   width: 600px;
    display: block;
    margin: 0 auto;
 }
