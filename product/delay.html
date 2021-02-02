@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Delay Searcher(Web)</title>
+</head>
+<link href="../styles/style.css" rel="stylesheet" type="text/css">
+<body>
+    <div id="delay">
+        <p>株式会社rti技研様の<a href="https://rti-giken.jp/fhc/api/train_tetsudo/">鉄道遅延情報のjson</a>からデータを取得して
+            テーブルで表示する簡単なページです。</p>
+        <table border="1">
+            <tr>
+                <th>会社名</th><th>路線名/優等列車</th><th>ソース元</th><th></th>
+            </tr>
+            <tr v-for="data in datalists">
+                <td>{{ data.company }}</td><td>{{ data.name }}</td><td>{{ data.source }}</td>
+                <td><button v-on:click="shareTwitter( data.company , data.name )">共有</button></td>
+            </tr>
+        </table>    
+    </div>
+    <script src = "./get_delay_json.js"></script>
+    <p><a href="../index.html">戻る</a></p> 
+</body>
+
+</html>
