@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+        <script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <title>Shopping_List</title>
+    </head>
+    <link href="../styles/style.css" rel="stylesheet" type="text/css">
+
+    <body>
+        <p>TODOリストを改変したものです。買いたいと思っているものの概要と予算を入力してAddボタンを押すとテーブルに追加されます。</p>
+        <p>購入の状態をキーにそれぞれラジオボタンで表示する条件を変更することができます。</p>
+        
+        <div id="app">
+
+            <label v-for="label in statement">
+                <input type="radio" v-model="current" v-bind:value="label.value">{{ label.label }}
+            </label>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th class="id">ID</th>
+                        <th class="context">買う物</th>
+                        <th class="budget">予算</th>
+                        <th class="state">状態</th>
+                        <th class="button">-</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in computedTodo" v-bind:key="item.id">
+                        <th>{{ item.id }}</th>
+                        <td>{{ item.context }}</td>
+                        <td>{{ item.budget }}円</td>
+                        <td><button v-on:click="changeState(item)">{{ labels[item.state] }}</td>
+                        <td><button v-on:click="deleteTodo(item)">削除</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>新しく買う物を追加</h2>
+            <div class="inline-block">
+                商品:<input type="text" placeholder="例:サメのぬいぐるみ" v-model="inputting">
+                予算:<input type="number" v-model="number">
+                <br><button v-on:click="addTodo(inputting,number)">Add</button>
+            </div>
+        </div>
+
+        <script src = "./shopping.js"></script> 
+        <p><a href="../index.html">戻る</a></p> 
+
+    </body>
+</html>

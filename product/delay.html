@@ -11,13 +11,14 @@
 <body>
     <div id="delay">
         <p>株式会社rti技研様の<a href="https://rti-giken.jp/fhc/api/train_tetsudo/">鉄道遅延情報のjson</a>からデータを取得して
-            テーブルで表示する簡単なページです。</p>
+            テーブルで表示する簡単なページです。路線名が無い場合(小田急電鉄など)は、会社名と路線名のセルを統合して表示しています。</p>
         <table border="1">
             <tr>
                 <th>会社名</th><th>路線名/優等列車</th><th>ソース元</th><th></th>
             </tr>
             <tr v-for="data in datalists">
-                <td>{{ data.company }}</td><td>{{ data.name }}</td><td>{{ data.source }}</td>
+                <td v-if="data.name != ''">{{ data.company }}</td><td v-if="data.name != ''">{{ data.name }}</td>
+                <td colspan="2" v-else="data.name == ''">{{ data.company }}本線</td><td>{{ data.source }}</td>
                 <td><button v-on:click="shareTwitter( data.company , data.name )">共有</button></td>
             </tr>
         </table>    

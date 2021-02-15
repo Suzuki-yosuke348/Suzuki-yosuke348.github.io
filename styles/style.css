@@ -16,3 +16,47 @@ img{
 p{
    padding: 2px 15px;
 }
+
+.done { text-decoration: line-through; }
+
+.list-complite-item{ transition: all 1s;}
+.list-complite-enter, .list-complite-leave-to
+   /*.list-complete-leave-active for below version 2.1.8*/{
+   opacity: 0;
+   transform: translateX(30px);
+}
+.list-complite-leave-active{ position: absolute;}
+
+.list-complite-nothing{transition: all 0.5s;}
+
+ul{
+   list-style-type: none;
+}
+
+.link-dark{
+   color: black;
+   text-decoration: none;
+}
+
+.timer-enter{
+   opacity: 0;
+}
+
+.timer-leave-to{
+   transform: translateX(50px);
+   transition: all .10s ease;
+   opacity: 0;
+}
+
+.timer-enter-active{
+   transition: all .10s ease;
+}
+
+.timer-leave-active{
+   transition: all .10s ease-in;
+}
+.clock-font{
+   text-align: center;
+   padding: 10px;
+   font-size: x-large;
+}

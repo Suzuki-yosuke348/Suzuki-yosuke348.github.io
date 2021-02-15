@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Shark_Clock</title>
+        <link href="../styles/style.css" rel="stylesheet" type="text/css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <h1>サメ時計</h1>
+        <div id="clock">
+            <transition name="timer" mode="out-in">
+                <div v-if="clockMode === true" key="clock">
+                    <p class="clock-font">{{ date }}</p>
+                    <p class="clock-font">{{ time }}</p>
+                </div>
+                <div v-else key="timer">
+                    <p class="clock-font">{{ interval.toFixed(3) }}</p>
+                    <button v-if="!active" v-on:click="timerStart()">Start</button>
+                    <button v-if="active" v-on:click="timerStop()">Stop</button>
+                    <button v-on:click="timerReset()">Reset</button>
+                </div>
+            </transition>
+        
+            <button v-on:click="modeChange()">Mode Change</button>
+        </div>
+        <script src = "./clock.js"></script>
+        <p><a href="../index.html">戻る</a></p> 
+    </body>
+</html>
