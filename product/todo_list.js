@@ -9,19 +9,30 @@ const defaultItems = [
 const app = new Vue({
     el: '#app',
     data: {
-        items: [],
+        items: [
+            {title: String,
+            isChecked: Boolean,
+        }],
         inputting: '',
         show: true,
     },
     
-    mounted(){
+    //mounted()にするとTODOが無い状態が見えてしまうのでcreated()に
+    created(){
         this.loadTodo();
+    },
+
+    mounted() {
+        if(this.items == null){
+            this.items = [{title:'',isChecked: false}];
+            this.defaultTODO();
+        }
     },
 
     methods: {
 
         addTodo : function(){
-            if(this.inputting){
+            if(this.inputting){             //inputtingに値が入っているなら処理をする
                 this.items.push({
                     title: this.inputting,
                     isChecked: false
@@ -33,14 +44,14 @@ const app = new Vue({
 
         deleteTodo : function(){
             this.items = this.items.filter(function(items){
-                return items.isChecked === false;
+                return items.isChecked === false;   //チェックボックスにONがされていなかったらそのままリストに格納
             });
             this.saveTodo();
         },
 
         defaultTODO : function(){
-            this.items.splice(0, this.items.length);
-            this.items.push(...defaultItems);
+            this.items.splice(0, this.items.length);    //リストの初期化
+            this.items.push(...defaultItems);           //defaultItemsをitemsに格納
             this.saveTodo();
         },
 
@@ -51,10 +62,14 @@ const app = new Vue({
         loadTodo: function(){
             const i = JSON.parse( localStorage.getItem('items') );
             console.log(i);
+            this.items = i;
+            /*以下のコードは以前に動いていた処理
+            console.log(i);
             if( i.length == 0 ){
                 this.items.push(...defaultItems);
             }else{ this.items = i; }
             console.log(this.items)
+            */
         },
         
     },
