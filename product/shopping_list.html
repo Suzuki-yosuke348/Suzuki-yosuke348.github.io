@@ -17,7 +17,7 @@
             <label v-for="label in statement">
                 <input type="radio" v-model="current" v-bind:value="label.value">{{ label.label }}
             </label>
-
+            
             <table>
                 <thead>
                     <tr>
@@ -28,8 +28,9 @@
                         <th class="button">-</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr v-for="item in computedTodo" v-bind:key="item.id">
+                <!--isタグでアニメーションがつくようになる-->
+                <tbody name="list-complite" is="transition-group" tag="p">
+                    <tr v-for="item in computedTodo" v-bind:key="item.id" class="list-complite-item">
                         <th>{{ item.id }}</th>
                         <td>{{ item.context }}</td>
                         <td>{{ item.budget }}円</td>
